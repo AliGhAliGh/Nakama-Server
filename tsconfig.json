@@ -1,10 +1,11 @@
 {
     "files": [
         "./main.ts",
-        "./healthcheck.ts"
+        "./healthcheck.ts",
+        "./ProfileManager.ts"
     ],
     "compilerOptions": {
-        "target": "ES5",
+        "target": "ES2016",
         "typeRoots": [
             "./node_modules"
         ],

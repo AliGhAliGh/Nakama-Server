@@ -1,7 +1,9 @@
 function InitModule(ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, initializer: nkruntime.Initializer) {
     initializer.registerRpc("HealthCheck", rpcHealthcheck);
+    initializer.registerRpc("ChangeMetaData", UpdateMetadata);
     // initializer.registerRtAfter("MatchJoin", MatchJoinAH);
     //initializer.registerRtBefore("MatchJoin", MatchJoinBH);
+
     logger.info('javascript has loaded v2!');
 }
 
