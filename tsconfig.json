@@ -8,6 +8,7 @@
     ],
     "compilerOptions": {
         "target": "ES2017",
+        "types": ["nakama-runtime"],
         "typeRoots": [
             "./node_modules"
         ],

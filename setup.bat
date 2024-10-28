@@ -6,16 +6,16 @@ REM Ask user for cache mode or full build with a default to "Y"
 set /p cacheMode="Use cache mode? (Y/N) [Y]: "
 if "%cacheMode%"=="" set cacheMode=Y
 if /I "%cacheMode%"=="Y" (
-    set noCacheOption=""
+    set noCacheOption=
     set USE_CACHE=true
 ) else (
-    set noCacheOption="--no-cache"
+    set noCacheOption=--no-cache
     set USE_CACHE=false
 )
 
 REM Perform the build and check for errors
 docker compose stop
-set docker compose build %noCacheOption% USE_CACHE=%USE_CACHE%
+docker compose build %noCacheOption% --build-arg USE_CACHE=%USE_CACHE%
 if %ERRORLEVEL% NEQ 0 (
     echo.
     echo [31mBuild Failed![0m
