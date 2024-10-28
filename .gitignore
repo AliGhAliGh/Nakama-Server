@@ -1,0 +1,4 @@
+cmd.exe
+/node_modules
+**.tar
+/build
