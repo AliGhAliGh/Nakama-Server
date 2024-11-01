@@ -1,23 +1,5 @@
-// initializer.RegisterRpc("UpdateMetadata", func(ctx context.Context, logger runtime.Logger, db * sql.DB, nk runtime.NakamaModule, payload string)(string, error) {
-//     userId, ok:= ctx.Value(runtime.RUNTIME_CTX_USER_ID).(string)
-//     if !ok {
-//     return "", errors.New("could not get user ID from context")
-// }
-
-//     if err := nk.AccountUpdateId(ctx, userId, "", map[string]interface{}{
-//     "title": "Definitely Not The Imposter",
-//     "hat": "space_helmet"
-//         "skin": "alien"
-// },
-//     }, "", "", "", "", ""); err != nil {
-//     return "", errors.New("could not update account")
-// }
-
-// return "{}", nil
-// })
-
 function UpdateMetadata(ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, payLoad: string): string {
-    logger.info("RPC called for updating user metadata.");
+    logger.debug("RPC called for updating user metadata.");
 
     // Parse the incoming payload which contains user ID and metadata
     let metaData: Record<string, any>;
@@ -27,6 +9,9 @@ function UpdateMetadata(ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nk
         logger.error("Failed to parse the request payload.");
         throw Error("Invalid request payload.");
     }
+
+    if (ctx.userId === undefined)
+        throw Error("User id is undefined!");
 
     // Fetch the user account
     let account: nkruntime.Account;
@@ -52,7 +37,7 @@ function UpdateMetadata(ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nk
         throw Error(`Failed to update metadata for user ID: ${ctx.userId}`);
     }
 
-    logger.info(`Metadata updated successfully for user ID: ${ctx.userId}`);
+    logger.debug(`Metadata updated successfully for user ID: ${ctx.userId}`);
 
     // Return a success response
     return JSON.stringify({ success: true });

@@ -2,10 +2,13 @@
     "files": [
         "./main.ts",
         "./healthcheck.ts",
+        "./MatchManager.ts",
+        "./Wallet.ts",
         "./ProfileManager.ts"
     ],
     "compilerOptions": {
-        "target": "ES2016",
+        "target": "ES2017",
+        "types": ["nakama-runtime"],
         "typeRoots": [
             "./node_modules"
         ],
