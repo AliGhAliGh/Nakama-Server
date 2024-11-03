@@ -11,11 +11,11 @@ logger:
 # #   namespace: ""
 #   prometheus_port: 9100
 
-database:
-  address:
+# database:
+#   address:
   # - "root@cockroachdb:26257"
   # - "postgres:localdb@postgres:5432/nakama"
-  - "root@cockroachdb:26257/nakama"
+  # - "root@cockroachdb:26257/nakama"
 
 #   conn_max_lifetime_ms: 0
 #   max_open_conns: 0
@@ -27,7 +27,7 @@ runtime:
 #   - "encryptionkey=afefa==e332*u13=971mldq"
 #   path: "/tmp/modules/folders"
 #   http_key: "defaulthttpkey"
-  js_entrypoint: "./build/index.js"
+  js_entrypoint: "../../src/build/index.js"
 
 socket:
   server_key: "AliGh"
