@@ -1,4 +1,6 @@
-cmd.exe
-/node_modules
+src/node_modules
 **.tar
-/build
+src/build
+cockroach-data/
+*.exe
+data/
