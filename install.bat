@@ -20,6 +20,12 @@ powershell -ExecutionPolicy Bypass -File install/downloader.ps1 ^
     -nakamaTar "%nakama_tar%" ^
     -nakamaExe "%nakama_exe%"
 
+if %ERRORLEVEL% NEQ 0 (
+    echo.
+    echo [31mFailed![0m
+    goto :end
+)
+
 start "database" bin/cockroach.exe start-single-node --insecure --listen-addr=127.0.0.1
 
 set /p cacheMode="Use cache mode? (Y/N) [Y]: "

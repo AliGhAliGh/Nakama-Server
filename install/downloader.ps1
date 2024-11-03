@@ -44,6 +44,10 @@ if (-not (Test-Path -Path $nakamaExe)) {
 
     DownloadFile -url $nakamaUrl -outputPath $nakamaTar
 
+    if (-not (Test-Path "$nakamaTar")) {
+        exit 1
+    }
+
     tar -xf $nakamaTar -C $resultDir
     
     Get-ChildItem -Path $resultDir -File | Where-Object { $_.Name -ne "nakama.exe" } | Remove-Item -Force
@@ -67,6 +71,7 @@ if (-not (Test-Path -Path $cockroachExe)) {
     }
     else {
         Write-Output "cockroach.exe not found in extracted folder."
+        exit 1
     }
 }
 else {
